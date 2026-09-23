@@ -39,21 +39,19 @@ para o `docs/PLANO.md`. Exemplos reais deste repositório:
 O histórico responde "por que isso está assim?" com data e contexto. O comentário só
 responde até alguém mudar o código em volta e esquecer dele.
 
-## As três exceções
+## A única exceção
 
-São exatamente as que sobreviveram à revisão do código. Um comentário só se justifica
-quando o próprio código parece arbitrário e alguém o apagaria por não entender:
+`src/` está com zero comentários e é assim que fica. Os únicos que sobreviveram à revisão
+estão em configuração de ferramenta, onde o código contorna uma limitação externa e
+pareceria arbitrário sem a linha — alguém o apagaria por não entender:
 
-| Onde                      | O que a linha explica                                                          |
-| ------------------------- | ------------------------------------------------------------------------------ |
-| `vitest.setup.ts`         | Por que existem stubs: o jsdom não tem `IntersectionObserver` nem `matchMedia` |
-| `vitest.setup.ts`         | Por que o `localStorage` é limpo entre testes: o `next-themes` persiste o tema |
-| `playwright.config.ts`    | Pré-condição de quem roda: o e2e testa `out/`, então o build vem antes         |
-| `ui/ContentContainer.tsx` | A regra de layout: borda ocupa a coluna inteira, só o texto é limitado         |
+| Onde                   | O que a linha explica                                                          |
+| ---------------------- | ------------------------------------------------------------------------------ |
+| `vitest.setup.ts`      | Por que existem stubs: o jsdom não tem `IntersectionObserver` nem `matchMedia` |
+| `vitest.setup.ts`      | Por que o `localStorage` é limpo entre testes: o `next-themes` persiste o tema |
+| `playwright.config.ts` | Pré-condição de quem roda: o e2e testa `out/`, então o build vem antes         |
 
-O padrão: arquivo de infraestrutura onde o código contorna uma limitação externa, ou
-primitivo visual cuja regra não aparece no valor. Note que nenhuma é um componente de
-tela, um hook, um util ou um teste.
+Fora de arquivo de configuração, presuma que não cabe comentário.
 
 Formato: português, uma ou duas linhas, acima do trecho.
 
