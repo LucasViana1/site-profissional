@@ -133,13 +133,19 @@ docs/
   (smoke desktop/mobile contra `out/`), CI (lint, format, typecheck, build, e2e), README.
 - `typecheck` roda `next typegen` antes do `tsc` (o helper global `LayoutProps` vem daí).
 
-**Fase 1 — Shell (1 dia)**
+**Fase 1 — Shell — concluída em 2026-09-22**
 
-- `Portfolio` + Rail (desktop) + TopBar/Drawer (mobile), scroll-spy, toggles de tema e
-  idioma, rotas `/` e `/en`, `content/types.ts` e conteúdo placeholder do wireframe.
-- `lang` do `<html>` por idioma: dois root layouts via route groups (`app/(pt)/` e
-  `app/(en)/en/`) compartilhando um componente `RootDocument({ lang })`, já que
-  redirects/proxy não existem no export estático.
+- `Portfolio` + `SiteShell` com Rail (desktop), TopBar + `<dialog>` drawer (mobile),
+  scroll-spy por `IntersectionObserver`, toggles de tema e idioma, Hero real e as 7
+  seções como esqueleto.
+- Rotas `/` e `/en` via route groups `app/(pt)/` e `app/(en)/en/`, cada uma com root
+  layout próprio sobre um `RootDocument({ locale })` — o `lang` do `<html>` precisa ser
+  estático porque o export não tem redirect/proxy.
+- Âncoras canônicas em inglês (`#projects`) para valerem nos dois idiomas; rótulos vêm
+  do conteúdo. Conteúdo tipado em `src/content/` (`pt.ts`/`en.ts`).
+- Estrutura e nomenclatura (pastas `hooks/` e `utils/`, componentes em PascalCase,
+  um componente por arquivo) estão registradas no `CLAUDE.md`.
+- Vitest + Testing Library configurados; 15 unitários e 9 specs e2e (desktop + mobile).
 
 **Fase 2 — Seções (1–2 dias)**
 
