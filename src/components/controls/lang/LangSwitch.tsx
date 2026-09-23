@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { LOCALES, localeHref, localeLabel, type Locale } from "@/utils/i18n";
+import { cn } from "@/utils/cn";
 
 export function LangSwitch({ legend, current }: { legend: string; current: Locale }) {
   return (
@@ -14,9 +15,10 @@ export function LangSwitch({ legend, current }: { legend: string; current: Local
               href={localeHref(locale)}
               hrefLang={locale}
               aria-current={active ? "page" : undefined}
-              className={`rounded px-2 py-1.5 font-mono text-[9px] font-medium ${
-                active ? "bg-accent-soft text-accent-soft-text" : "text-secondary"
-              }`}
+              className={cn(
+                "rounded px-2 py-1.5 font-mono text-[9px] font-medium",
+                active ? "bg-accent-soft text-accent-soft-text" : "text-secondary",
+              )}
             >
               {localeLabel(locale)}
             </Link>

@@ -2,6 +2,7 @@ import type { ReactNode } from "react";
 import type { SectionId } from "@/utils/i18n";
 import { ContentContainer } from "@/components/ui/ContentContainer";
 import { SectionLabel } from "./SectionLabel";
+import { cn } from "@/utils/cn";
 
 export function Section({
   id,
@@ -18,9 +19,10 @@ export function Section({
     <section
       id={id}
       aria-label={label}
-      className={`border-border scroll-mt-16 border-t py-9 lg:py-14 ${
-        tone === "surface" ? "bg-surface" : ""
-      }`}
+      className={cn(
+        "border-border scroll-mt-16 border-t py-9 lg:py-14",
+        tone === "surface" && "bg-surface",
+      )}
     >
       <ContentContainer>
         <SectionLabel>{label}</SectionLabel>

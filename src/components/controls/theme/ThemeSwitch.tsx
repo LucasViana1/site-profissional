@@ -1,6 +1,7 @@
 "use client";
 
 import { useThemeControls, type ThemeName } from "@/hooks/useThemeControls";
+import { cn } from "@/utils/cn";
 
 type ThemeLabels = { light: string; dark: string };
 
@@ -41,9 +42,10 @@ function ThemePill({
       type="button"
       aria-pressed={active}
       onClick={() => onSelect(theme)}
-      className={`cursor-pointer rounded px-2 py-1.5 font-mono text-[9px] font-medium ${
-        active ? "bg-accent-soft text-accent-soft-text" : "text-secondary"
-      }`}
+      className={cn(
+        "cursor-pointer rounded px-2 py-1.5 font-mono text-[9px] font-medium",
+        active ? "bg-accent-soft text-accent-soft-text" : "text-secondary",
+      )}
     >
       {label}
     </button>

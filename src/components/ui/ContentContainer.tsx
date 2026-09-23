@@ -1,18 +1,14 @@
 import type { ReactNode } from "react";
+import { cn } from "@/utils/cn";
 
-/**
- * Largura de leitura do conteúdo. As bordas e os fundos das seções continuam
- * ocupando a coluna inteira; só o texto é limitado e centralizado, para não
- * ficar colado à esquerda em telas largas.
- */
 export function ContentContainer({
   children,
-  className = "",
+  className,
 }: {
   children: ReactNode;
   className?: string;
 }) {
   return (
-    <div className={`mx-auto w-full max-w-[1180px] px-4.5 lg:px-14 ${className}`}>{children}</div>
+    <div className={cn("mx-auto w-full max-w-[1180px] px-4.5 lg:px-14", className)}>{children}</div>
   );
 }

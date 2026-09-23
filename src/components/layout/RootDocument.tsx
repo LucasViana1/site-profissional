@@ -4,6 +4,7 @@ import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { ThemeProvider } from "@/components/providers/ThemeProvider";
 import { htmlLang, type Locale } from "@/utils/i18n";
+import { cn } from "@/utils/cn";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -21,7 +22,7 @@ export function RootDocument({ locale, children }: { locale: Locale; children: R
   return (
     <html
       lang={htmlLang(locale)}
-      className={`${inter.variable} ${jetbrainsMono.variable} h-full antialiased`}
+      className={cn(inter.variable, jetbrainsMono.variable, "h-full antialiased")}
       suppressHydrationWarning
     >
       <body className="min-h-full" suppressHydrationWarning>

@@ -1,4 +1,5 @@
 import { SECTION_IDS, type SectionId } from "@/utils/i18n";
+import { cn } from "@/utils/cn";
 
 export type NavVariant = "rail" | "drawer";
 
@@ -40,15 +41,16 @@ function NavItem({
   variant: NavVariant;
   onNavigate?: () => void;
 }) {
-  const shared = active ? "text-primary" : "text-secondary";
-
   if (variant === "drawer") {
     return (
       <a
         href={href}
         onClick={onNavigate}
         aria-current={active ? "true" : undefined}
-        className={`block py-1.5 text-[22px]/[1.4] font-semibold ${active ? "text-accent" : "text-primary"}`}
+        className={cn(
+          "block py-1.5 text-[22px]/[1.4] font-semibold",
+          active ? "text-accent" : "text-primary",
+        )}
       >
         {label}
       </a>
@@ -60,11 +62,14 @@ function NavItem({
       href={href}
       onClick={onNavigate}
       aria-current={active ? "true" : undefined}
-      className={`flex items-center gap-3 py-2.5 text-[13px] ${active ? "font-semibold" : ""} ${shared}`}
+      className={cn(
+        "flex items-center gap-3 py-2.5 text-[13px]",
+        active ? "text-primary font-semibold" : "text-secondary",
+      )}
     >
       <span
         aria-hidden
-        className={`h-px transition-all ${active ? "bg-accent w-5" : "bg-dash w-2.5"}`}
+        className={cn("h-px transition-all", active ? "bg-accent w-5" : "bg-dash w-2.5")}
       />
       {label}
     </a>
