@@ -22,7 +22,10 @@ Plano, tokens e fases: `docs/PLANO.md`. Wireframe: projeto Claude Design (ver pl
 - Um componente exportado por arquivo. Quando vários componentes formam um mesmo escopo,
   o escopo vira pasta em minúsculo com um arquivo por componente
   (`controls/theme/ThemeSwitch.tsx`, `controls/theme/ThemeToggleButton.tsx`).
-- Subcomponentes usados só naquele arquivo (ícones, item de lista) ficam nele, sem export.
+- Ícone é componente próprio em `components/ui/icons/`, desenhado em SVG inline com
+  `stroke="currentColor"` — SVG em `public/` não herda a cor do tema.
+- Outros subcomponentes usados só naquele arquivo (item de lista, pill) ficam nele,
+  sem export.
 - Módulo que não é componente nem hook fica em minúsculo (`i18n.ts`, `types.ts`).
 - Teste ao lado do arquivo testado, com o mesmo nome (`NavList.test.tsx`).
 
