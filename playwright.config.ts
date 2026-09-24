@@ -1,6 +1,6 @@
 import { defineConfig, devices } from "@playwright/test";
 
-const PORT = 3000;
+const PORT = 4173;
 
 /** Testa o build estático (`out/`), que é o que vai para produção. Rode `pnpm build` antes. */
 export default defineConfig({
