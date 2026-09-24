@@ -2,7 +2,7 @@ import { describe, expect, it, vi } from "vitest";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { getContent } from "@/content";
-import { SECTION_IDS } from "@/utils/i18n";
+import { VISIBLE_SECTION_IDS } from "@/utils/sections";
 import { NavList } from "./NavList";
 
 const labels = getContent("pt").sections;
@@ -13,7 +13,7 @@ describe("NavList", () => {
 
     const links = screen.getAllByRole("link");
     expect(links.map((link) => link.getAttribute("href"))).toEqual(
-      SECTION_IDS.map((id) => `#${id}`),
+      VISIBLE_SECTION_IDS.map((id) => `#${id}`),
     );
   });
 

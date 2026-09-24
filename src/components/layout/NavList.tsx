@@ -1,4 +1,4 @@
-import { SECTION_IDS, type SectionId } from "@/utils/i18n";
+import { VISIBLE_SECTION_IDS, type SectionId } from "@/utils/sections";
 import { cn } from "@/utils/cn";
 
 export type NavVariant = "rail" | "drawer";
@@ -13,7 +13,7 @@ type NavListProps = {
 export function NavList({ labels, activeId, variant, onNavigate }: NavListProps) {
   return (
     <ul className={variant === "rail" ? "flex flex-col" : "flex flex-col gap-0.5"}>
-      {SECTION_IDS.map((id) => (
+      {VISIBLE_SECTION_IDS.map((id) => (
         <li key={id}>
           <NavItem
             href={`#${id}`}

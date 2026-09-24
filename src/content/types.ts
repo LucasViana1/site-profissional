@@ -1,4 +1,4 @@
-import type { SectionId } from "@/utils/i18n";
+import type { SectionId } from "@/utils/sections";
 
 export type SiteContent = {
   meta: {
@@ -28,10 +28,72 @@ export type SiteContent = {
     primaryCta: string;
     secondaryCta: string;
   };
+  about: {
+    columns: string[];
+  };
+  experience: {
+    summary: string;
+    detail: string;
+    resume: ExternalLink;
+  };
+  services: {
+    kinds: string;
+    intro: string;
+    items: Service[];
+    cta: string;
+  };
+  projects: {
+    all: ExternalLink;
+    problemLabel: string;
+    thumbnailLabel: string;
+    featured: FeaturedProject[];
+    others: SecondaryProject[];
+  };
+  stack: {
+    groups: StackGroup[];
+  };
+  writing: {
+    items: Article[];
+  };
+  contact: {
+    title: string;
+    note: string;
+    emailCta: string;
+  };
   footer: string;
 };
 
 export type ExternalLink = {
   label: string;
+  href: string;
+};
+
+export type Service = {
+  title: string;
+  description: string;
+  tags: string[];
+};
+
+export type FeaturedProject = {
+  title: string;
+  description: string;
+  tags: string[];
+  links: ExternalLink[];
+  image?: string;
+};
+
+export type SecondaryProject = {
+  title: string;
+  description: string;
+};
+
+export type StackGroup = {
+  title: string;
+  items: string[];
+};
+
+export type Article = {
+  date: string;
+  title: string;
   href: string;
 };

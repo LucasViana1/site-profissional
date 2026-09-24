@@ -2,7 +2,8 @@
 
 import { useState, type ReactNode } from "react";
 import type { SiteContent } from "@/content";
-import { SECTION_IDS, type Locale } from "@/utils/i18n";
+import type { Locale } from "@/utils/i18n";
+import { VISIBLE_SECTION_IDS } from "@/utils/sections";
 import { useScrollSpy } from "@/hooks/useScrollSpy";
 import { Rail } from "./Rail";
 import { TopBar } from "./TopBar";
@@ -17,7 +18,7 @@ export function SiteShell({
   locale: Locale;
   children: ReactNode;
 }) {
-  const activeId = useScrollSpy(SECTION_IDS);
+  const activeId = useScrollSpy(VISIBLE_SECTION_IDS);
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
