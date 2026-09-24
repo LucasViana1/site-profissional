@@ -1,12 +1,16 @@
 import { getContent } from "@/content";
-import { SECTION_IDS, type Locale } from "@/utils/i18n";
+import type { Locale } from "@/utils/i18n";
+import { isSectionVisible } from "@/utils/sections";
 import { SiteShell } from "./layout/SiteShell";
 import { Hero } from "./sections/Hero";
+import { About } from "./sections/About";
+import { Experience } from "./sections/Experience";
+import { Services } from "./sections/Services";
+import { Projects } from "./sections/Projects";
+import { Stack } from "./sections/Stack";
+import { Writing } from "./sections/Writing";
+import { Contact } from "./sections/Contact";
 import { ContentContainer } from "./ui/ContentContainer";
-import { ContentSkeleton } from "./ui/ContentSkeleton";
-import { Section } from "./ui/section/Section";
-
-const SURFACE_SECTIONS = new Set(["services", "contact"]);
 
 export function Portfolio({ locale }: { locale: Locale }) {
   const content = getContent(locale);
@@ -14,17 +18,13 @@ export function Portfolio({ locale }: { locale: Locale }) {
   return (
     <SiteShell content={content} locale={locale}>
       <Hero content={content} />
-
-      {SECTION_IDS.map((id) => (
-        <Section
-          key={id}
-          id={id}
-          label={content.sections[id]}
-          tone={SURFACE_SECTIONS.has(id) ? "surface" : "base"}
-        >
-          <ContentSkeleton widths={["100%", "88%", "54%"]} />
-        </Section>
-      ))}
+      <About content={content} />
+      <Experience content={content} />
+      <Services content={content} />
+      <Projects content={content} />
+      <Stack content={content} />
+      {isSectionVisible("writing") && <Writing content={content} />}
+      <Contact content={content} />
 
       <footer className="border-border text-muted border-t py-5 font-mono text-[10px]">
         <ContentContainer>
