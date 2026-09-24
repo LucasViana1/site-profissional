@@ -1,17 +1,23 @@
 import { expect, test, type Page } from "@playwright/test";
 
-const SECTION_IDS = ["about", "experience", "services", "projects", "stack", "writing", "contact"];
-
 async function openNavigation(page: Page, isMobile: boolean) {
   if (isMobile) await page.getByRole("button", { name: "Abrir menu" }).click();
 }
 
 test.describe("shell", () => {
-  test("should render every section anchor", async ({ page }) => {
+  test("should anchor every nav item to a section on the page", async ({ page, isMobile }) => {
     await page.goto("/");
+    await openNavigation(page, isMobile);
 
-    for (const id of SECTION_IDS) {
-      await expect(page.locator(`section#${id}`)).toBeAttached();
+    const hrefs = await page
+      .getByRole("navigation")
+      .first()
+      .locator('a[href^="#"]')
+      .evaluateAll((links) => links.map((link) => link.getAttribute("href")));
+
+    expect(hrefs.length).toBeGreaterThan(0);
+    for (const href of hrefs) {
+      await expect(page.locator(`section${href}`)).toBeAttached();
     }
   });
 
@@ -41,11 +47,11 @@ test.describe("language", () => {
   test("should serve portuguese at the root and english at /en", async ({ page }) => {
     await page.goto("/");
     await expect(page.locator("html")).toHaveAttribute("lang", "pt-BR");
-    await expect(page.locator("section#about")).toHaveAttribute("aria-label", "sobre");
+    await expect(page.locator("#about-title")).toHaveText("sobre");
 
     await page.goto("/en");
     await expect(page.locator("html")).toHaveAttribute("lang", "en");
-    await expect(page.locator("section#about")).toHaveAttribute("aria-label", "about");
+    await expect(page.locator("#about-title")).toHaveText("about");
   });
 
   test("should switch to english from the portuguese page", async ({ page, isMobile }) => {
