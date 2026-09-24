@@ -34,6 +34,17 @@ pnpm test:e2e     # testa o build estático (precisa do build antes)
 
 Na primeira vez, instale o navegador do Playwright: `pnpm exec playwright install chromium`.
 
+## Seções opcionais
+
+Copie `.env.example` para `.env` (o `.env` não é versionado) e ajuste as flags:
+
+```
+NEXT_PUBLIC_SHOW_WRITING=false   # true faz a seção "escrita" voltar à página e à navegação
+```
+
+O valor é lido no `pnpm build`, então mudanças exigem novo build. Em produção, defina a
+variável nas configurações do projeto na Vercel — o `.env` local não chega lá.
+
 ## Estrutura
 
 ```
@@ -43,7 +54,7 @@ src/app/globals.css  design tokens
 src/components/   layout (rail, topbar, drawer), controles, seções, ui
 src/content/      textos e dados por idioma (sem CMS)
 src/hooks/        hooks customizados (scroll-spy, controles de tema)
-src/utils/        helpers sem estado (i18n)
+src/utils/        helpers sem estado (i18n, seções, cn)
 e2e/              testes Playwright
 docs/PLANO.md     planejamento, tokens e fases
 ```

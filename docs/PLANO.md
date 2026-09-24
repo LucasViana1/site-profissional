@@ -147,9 +147,19 @@ docs/
   um componente por arquivo) estão registradas no `CLAUDE.md`.
 - Vitest + Testing Library configurados; 15 unitários e 9 specs e2e (desktop + mobile).
 
-**Fase 2 — Seções (1–2 dias)**
+**Fase 2 — Seções — concluída em 2026-09-23**
 
-- Todas as seções com componentes `ui/`, responsivas, dark mode verificado seção a seção.
+- Sobre, Experiência, Serviços, Projetos, Stack, Escrita e Contato montadas sobre os primitivos
+  `ui/` (`Card`, `Tag`, `ActionLink`, `ArrowLink`, `Section`), com texto placeholder tipado em
+  `src/content/`.
+- `Section` passou a usar `<h2>` com `aria-labelledby` no lugar de `aria-label`.
+- Contraste: `--text-muted` foi de `#a1a1aa`/`#75818f` para `#71717a`/`#7d8998`. Os valores do
+  wireframe reprovavam no WCAG AA (2,45:1 no claro, 4,36:1 no escuro) nos rótulos de seção,
+  datas e links do rail.
+- `@axe-core/playwright` com `e2e/a11y.spec.ts` cobrindo `/` e `/en` em claro e escuro.
+- A seção de escrita é opcional: `NEXT_PUBLIC_SHOW_WRITING` no `.env` controla se ela
+  aparece na página e na navegação. Está desligada até haver artigo publicado.
+- A label "disponibilidade atual" saiu dos serviços.
 
 **Fase 3 — Conteúdo real (depende do Lucas)**
 
