@@ -1,5 +1,9 @@
 import type { ReactNode } from "react";
 
-export function SectionLabel({ children }: { children: ReactNode }) {
-  return <p className="text-muted font-mono text-[10px] tracking-[.14em] uppercase">{children}</p>;
+export function SectionLabel({ id, children }: { id?: string; children: ReactNode }) {
+  return (
+    <h2 id={id} className="text-muted font-mono text-[10px] tracking-[.14em] uppercase">
+      {children}
+    </h2>
+  );
 }
