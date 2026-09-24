@@ -17,6 +17,7 @@ export type SiteContent = {
     label: string;
     openMenu: string;
     closeMenu: string;
+    skipToContent: string;
     language: string;
     theme: string;
     themeOptions: { light: string; dark: string };

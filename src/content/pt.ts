@@ -2,13 +2,13 @@ import type { SiteContent } from "./types";
 
 export const pt: SiteContent = {
   meta: {
-    title: "Lucas Viana · frontend engineer",
+    title: "Lucas Viana · software engineer",
     description:
-      "Frontend engineer focado em checkout e e-commerce com React, Next.js e TypeScript.",
+      "Software engineer com mais de sete anos em produtos web e e-commerce. Faço sites, landing pages e melhorias em sites que já estão no ar.",
   },
   profile: {
     name: "Lucas Viana",
-    role: "frontend engineer",
+    role: "software engineer",
     avatar: "/avatar.jpg",
     email: "lucasviana112@gmail.com",
     links: [
@@ -29,6 +29,7 @@ export const pt: SiteContent = {
     label: "Navegação principal",
     openMenu: "Abrir menu",
     closeMenu: "Fechar menu",
+    skipToContent: "Pular para o conteúdo",
     language: "idioma",
     theme: "tema",
     themeOptions: { light: "light", dark: "dark" },
