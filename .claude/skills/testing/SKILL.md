@@ -66,10 +66,8 @@ Descubra se o teste está errado ou o código. Um snapshot diferente depois de u
 pedido pelo desenvolvedor é o teste fazendo o trabalho dele: atualize. Um snapshot diferente sem mudança
 intencional é bug. Nunca aumente `maxDiffPixels` ou apague um teste para "fazer passar".
 
-## Setup pendente
+## Estado do setup
 
-Unitário (Vitest), e2e (Playwright) e acessibilidade (`e2e/a11y.spec.ts`) já estão montados e
-rodando no CI. Falta só a camada visual, que fica para depois do conteúdo real, senão todo
-ajuste de texto invalida as imagens:
-
-- `e2e/visual.spec.ts` com os 8 snapshots iniciais (`/` e `/en` × desktop/mobile × light/dark).
+As quatro camadas estão montadas e rodando no CI. Snapshots visuais ficam em
+`e2e/visual.spec.ts-snapshots/` e são gerados em Linux — se o layout mudar de propósito,
+atualize com `--update-snapshots` e diga isso no commit.
