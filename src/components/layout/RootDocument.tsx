@@ -3,6 +3,8 @@ import { Inter, JetBrains_Mono } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { ThemeProvider } from "@/components/providers/ThemeProvider";
+import { PersonSchema } from "./PersonSchema";
+import { getContent } from "@/content";
 import { htmlLang, type Locale } from "@/utils/i18n";
 import { cn } from "@/utils/cn";
 
@@ -19,6 +21,8 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export function RootDocument({ locale, children }: { locale: Locale; children: ReactNode }) {
+  const { nav, profile } = getContent(locale);
+
   return (
     <html
       lang={htmlLang(locale)}
@@ -26,7 +30,14 @@ export function RootDocument({ locale, children }: { locale: Locale; children: R
       suppressHydrationWarning
     >
       <body className="min-h-full" suppressHydrationWarning>
+        <a
+          href="#main"
+          className="bg-accent text-surface sr-only rounded-lg px-4 py-2 text-sm font-semibold focus:not-sr-only focus:absolute focus:top-3 focus:left-3 focus:z-50"
+        >
+          {nav.skipToContent}
+        </a>
         <ThemeProvider>{children}</ThemeProvider>
+        <PersonSchema profile={profile} />
         <Analytics />
         <SpeedInsights />
       </body>

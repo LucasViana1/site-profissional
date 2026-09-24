@@ -32,7 +32,9 @@ export function SiteShell({
         open={menuOpen}
         onClose={() => setMenuOpen(false)}
       />
-      <main className="min-w-0">{children}</main>
+      <main id="main" className="min-w-0">
+        {children}
+      </main>
     </div>
   );
 }
