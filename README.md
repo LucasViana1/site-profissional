@@ -30,6 +30,7 @@ pnpm format       # ou format:check
 pnpm test:unit    # Vitest (componentes e conteúdo)
 pnpm build        # gera out/
 pnpm test:e2e     # testa o build estático (precisa do build antes)
+pnpm test:e2e e2e/visual.spec.ts --update-snapshots   # só quando o layout muda de propósito
 ```
 
 Na primeira vez, instale o navegador do Playwright: `pnpm exec playwright install chromium`.
@@ -47,6 +48,22 @@ Copie `.env.example` para `.env` (o `.env` não é versionado) e ajuste as flags
 Só `true` liga; variável ausente mantém o conteúdo oculto. O valor é lido no `pnpm build`,
 então mudanças exigem novo build. Em produção, defina as variáveis nas configurações do projeto
 na Vercel — o `.env` local não chega lá.
+
+## Deploy
+
+O deploy acontece pela integração da Vercel com o GitHub: um push na `main` vai para produção
+e cada pull request ganha um preview. É o caminho recomendado, porque o CI roda antes e o que
+está no ar corresponde ao que está versionado.
+
+Os scripts abaixo existem para um deploy manual pontual, fora desse fluxo:
+
+```bash
+pnpm deploy:preview   # sobe um preview
+pnpm deploy:prod      # sobe direto para produção
+```
+
+Eles enviam a pasta local, não o que está commitado, e não passam pelo CI. Use com cuidado.
+O login do CLI é pedido na primeira vez e fica guardado fora do repositório.
 
 ## Estrutura
 

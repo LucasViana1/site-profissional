@@ -168,10 +168,20 @@ docs/
 - Textos PT/EN, screenshots dos projetos, CV PDF, links de artigos, horas de
   disponibilidade, email/LinkedIn/GitHub.
 
-**Fase 4 — Qualidade e SEO (½–1 dia)**
+**Fase 4 — Qualidade e SEO — concluída em 2026-09-24**
 
-- `metadata` com `alternates.languages`, OG image, sitemap/robots, JSON-LD `Person`,
-  passe de a11y (contraste, foco, landmarks, skip link), Lighthouse ≥ 95, Playwright.
+- `buildMetadata(locale)` em `src/utils/metadata.ts`: `metadataBase`, canonical, `hreflang`
+  para PT e EN, Open Graph e Twitter card.
+- `sitemap.ts` e `robots.ts`; OG image gerada no build por idioma
+  (`opengraph-image.tsx` + `src/utils/openGraphImage.tsx`), com `dynamic = "force-static"`,
+  exigido pelo export.
+- JSON-LD `Person` no `RootDocument`; skip link para `#main`; anel de foco visível no
+  `globals.css`.
+- Título alinhado em "software engineer" (`meta.title` e `profile.role`) e descrição refeita
+  para o posicionamento atual.
+- `e2e/seo.spec.ts` e `e2e/visual.spec.ts` (8 snapshots). Porta do Playwright movida para 4173:
+  na 3000 ele reaproveitava um `next dev` e testava o dev server em vez do `out/`.
+- Lighthouse no build estático: performance 97, acessibilidade 100, boas práticas 96, SEO 100.
 
 **Fase 5 — Deploy**
 
