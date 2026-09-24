@@ -22,7 +22,6 @@ export type SiteContent = {
     themeOptions: { light: string; dark: string };
   };
   hero: {
-    status: string;
     tagline: string;
     summary: string;
     primaryCta: string;
@@ -57,7 +56,6 @@ export type SiteContent = {
   };
   contact: {
     title: string;
-    note: string;
     emailCta: string;
   };
   footer: string;
@@ -87,7 +85,10 @@ export type SecondaryProject = {
   description: string;
 };
 
+export type StackGroupId = "frontend" | "backend" | "ai" | "engineering" | "tools";
+
 export type StackGroup = {
+  id: StackGroupId;
   title: string;
   items: string[];
 };

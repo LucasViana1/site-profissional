@@ -10,10 +10,10 @@ export const en: SiteContent = {
     name: "Lucas Viana",
     role: "frontend engineer",
     avatar: "/avatar.jpg",
-    email: "email@dominio.com",
+    email: "lucasviana112@gmail.com",
     links: [
       { label: "GitHub", href: "https://github.com/LucasViana1" },
-      { label: "LinkedIn", href: "https://www.linkedin.com/" },
+      { label: "LinkedIn", href: "https://www.linkedin.com/in/lucas-viana-cunha/" },
     ],
   },
   sections: {
@@ -34,48 +34,50 @@ export const en: SiteContent = {
     themeOptions: { light: "light", dark: "dark" },
   },
   hero: {
-    status: "open to new projects",
-    tagline: "frontend engineer · checkout & e-commerce",
+    tagline: "software engineer · digital products & e-commerce",
     summary:
-      "I build buying experiences with React, Next.js and TypeScript — and today I bring the same care to the backend, with AI support.",
+      "I turn problems into digital solutions. For more than four years I have done that in the checkout of Magalu's e-commerce, where every detail of performance and reliability turns into a sale or an abandoned cart.",
     primaryCta: "See projects",
     secondaryCta: "Get in touch",
   },
   about: {
     columns: [
-      "I have spent the last few years on e-commerce products, always on the side the customer sees and uses to decide on a purchase. That is where detail turns into numbers: a misplaced field or half a second of delay costs conversion.",
-      "These days my work does not stop at the browser. I bring the same attention to the API, the database and the payment integrations, using AI as a tool to ship faster without giving up tests and review.",
+      "I am a software engineer specialised in front-end, with a degree in Computer Science, based in Jundiaí, São Paulo. In practice, my job is turning an idea into a screen that works: fast, clear and dependable for whoever is on the other side.",
+      "I have been building web products for more than seven years. I started as a fullstack developer, worked at an agency and in e-commerce, and today I work on the most critical area of a retail operation: the checkout. I also write tests, document what I build and take part in the team's architecture decisions. To me, engineering is the whole cycle, not just shipping the screen.",
     ],
   },
   experience: {
     summary:
-      "Frontend engineer focused on checkout and e-commerce. I build and maintain buying interfaces in React, Next.js and TypeScript, wired to payment gateways and measured by Core Web Vitals.",
+      "More than seven years building web products, the last four inside one of the largest e-commerce operations in Brazil. I have worked at an agency, at a social impact startup and in high-traffic digital retail.",
     detail:
       "I work from interface design through production monitoring, with automated tests and a close eye on conversion metrics.",
-    resume: { label: "Full résumé", href: "/cv-en.pdf" },
+    resume: {
+      label: "Full career history",
+      href: "https://docs.google.com/document/d/1zjaaUdXuXvzq5lSjyW-lYQC8DaNiSvNz/edit?usp=sharing&ouid=107710029748934966707&rtpof=true&sd=true",
+    },
   },
   services: {
-    kinds: "freelance · contract · consulting",
+    kinds: "freelance · consulting",
     intro:
-      "I join teams that already have a product running and need someone who understands buying, not just components.",
+      "I also build sites and pages for people who need to show up well online. From scratch or on top of what you already have.",
     items: [
       {
-        title: "Checkout & payments",
+        title: "Landing page that converts",
         description:
-          "Gateway integration, single-page flow and error handling that does not make the customer give up halfway.",
-        tags: ["gateway integration", "one-page"],
+          "A single page built for one thing: getting the visitor to reach out, sign up or buy. Fast on mobile, findable on Google and ready for you to track how many visits turned into contacts.",
+        tags: ["single page", "mobile-first", "contact form"],
       },
       {
-        title: "Performance & conversion",
+        title: "Site for a small business",
         description:
-          "Core Web Vitals diagnosis, JavaScript reduction and A/B tests so the decision rests on data.",
-        tags: ["Core Web Vitals", "A/B"],
+          "Your business online: who you are, what you offer, where you are and how to reach you. Wired to WhatsApp and Google Maps, with a layout that works on mobile, which is where most of your customers come from.",
+        tags: ["business site", "WhatsApp", "Google Maps"],
       },
       {
-        title: "AI features",
+        title: "Fixes on an existing site",
         description:
-          "Semantic search, support assistants and internal automations backed by language models.",
-        tags: ["RAG", "automation"],
+          "Your site is live but slow, broken on mobile, or nobody can find it? I review it, fix it and leave it working, without rebuilding everything from scratch.",
+        tags: ["responsive", "fixes", "maintenance"],
       },
     ],
     cta: "Request a quote",
@@ -119,10 +121,19 @@ export const en: SiteContent = {
   },
   stack: {
     groups: [
-      { title: "Frontend", items: ["React", "Next.js", "TypeScript", "Tailwind"] },
-      { title: "Backend & data", items: ["Node", "Postgres", "Prisma"] },
-      { title: "AI", items: ["LLM APIs", "RAG", "Embeddings"] },
-      { title: "Infra & testing", items: ["Vercel", "Docker", "Playwright"] },
+      {
+        id: "frontend",
+        title: "Front-end",
+        items: ["React", "Next.js", "TypeScript", "JavaScript", "React Native"],
+      },
+      { id: "backend", title: "Back-end & data", items: ["Node.js", "REST APIs", "SQL", "MySQL"] },
+      { id: "ai", title: "AI", items: ["LLM", "Agents", "RAG"] },
+      {
+        id: "engineering",
+        title: "Engineering",
+        items: ["automated testing", "web performance", "software architecture"],
+      },
+      { id: "tools", title: "Tools", items: ["Git", "GitHub", "Vercel", "Docker"] },
     ],
   },
   writing: {
@@ -146,7 +157,6 @@ export const en: SiteContent = {
   },
   contact: {
     title: "Let's talk about your project",
-    note: "reply within 24 business hours",
     emailCta: "Send an email",
   },
   footer: "lucas viana",

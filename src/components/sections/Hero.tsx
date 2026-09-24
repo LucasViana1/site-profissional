@@ -1,17 +1,15 @@
 import type { SiteContent } from "@/content";
 import { ContentContainer } from "@/components/ui/ContentContainer";
+import { ActionLink } from "@/components/ui/ActionLink";
+import { isSectionVisible } from "@/utils/sections";
 
 export function Hero({ content }: { content: SiteContent }) {
   const { hero, profile } = content;
+  const showProjects = isSectionVisible("projects");
 
   return (
     <section className="py-11 lg:pt-20 lg:pb-16">
       <ContentContainer className="flex flex-col gap-4 lg:gap-5">
-        <p className="text-secondary flex items-center gap-2 font-mono text-[10px] tracking-[.12em] uppercase">
-          <span aria-hidden className="bg-accent h-1.5 w-1.5 rounded-full" />
-          {hero.status}
-        </p>
-
         <h1 className="text-primary text-[40px]/[1] font-extrabold tracking-[-.035em] lg:text-[68px]">
           {profile.name}
         </h1>
@@ -23,18 +21,10 @@ export function Hero({ content }: { content: SiteContent }) {
         </p>
 
         <div className="mt-2 flex flex-col gap-2.5 sm:flex-row">
-          <a
-            href="#projects"
-            className="bg-accent text-surface rounded-lg px-5 py-3.5 text-center text-sm font-semibold"
-          >
-            {hero.primaryCta}
-          </a>
-          <a
-            href="#contact"
-            className="border-border bg-surface text-primary rounded-lg border px-5 py-3.5 text-center text-sm font-semibold"
-          >
+          {showProjects && <ActionLink href="#projects">{hero.primaryCta}</ActionLink>}
+          <ActionLink href="#contact" variant={showProjects ? "secondary" : "primary"}>
             {hero.secondaryCta}
-          </a>
+          </ActionLink>
         </div>
       </ContentContainer>
     </section>
