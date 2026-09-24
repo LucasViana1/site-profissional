@@ -68,11 +68,8 @@ intencional é bug. Nunca aumente `maxDiffPixels` ou apague um teste para "fazer
 
 ## Setup pendente
 
-O E2E básico já existe (`playwright.config.ts`, `e2e/smoke.spec.ts`). Ainda faltam, e devem ser
-adicionados na primeira vez que forem necessários (e esta seção removida depois):
+Unitário (Vitest), e2e (Playwright) e acessibilidade (`e2e/a11y.spec.ts`) já estão montados e
+rodando no CI. Falta só a camada visual, que fica para depois do conteúdo real, senão todo
+ajuste de texto invalida as imagens:
 
-- Vitest + `@vitejs/plugin-react` + `jsdom` + `@testing-library/react` + `@testing-library/jest-dom`,
-  script `test:unit`, `vitest.config.ts` com `environment: "jsdom"` e alias `@/`.
-- `@axe-core/playwright` e `e2e/a11y.spec.ts`.
-- `e2e/visual.spec.ts` com os 8 snapshots iniciais.
-- Passo `pnpm test:unit` no `.github/workflows/ci.yml`.
+- `e2e/visual.spec.ts` com os 8 snapshots iniciais (`/` e `/en` × desktop/mobile × light/dark).
