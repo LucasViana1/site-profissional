@@ -1,3 +1,5 @@
+import { SHOW_PROJECTS, SHOW_WRITING } from "./flags";
+
 export const SECTION_IDS = [
   "about",
   "experience",
@@ -11,7 +13,8 @@ export const SECTION_IDS = [
 export type SectionId = (typeof SECTION_IDS)[number];
 
 const OPTIONAL_SECTIONS: Partial<Record<SectionId, boolean>> = {
-  writing: process.env.NEXT_PUBLIC_SHOW_WRITING === "true",
+  projects: SHOW_PROJECTS,
+  writing: SHOW_WRITING,
 };
 
 export function isSectionVisible(id: SectionId): boolean {
