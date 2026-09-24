@@ -157,8 +157,10 @@ docs/
   wireframe reprovavam no WCAG AA (2,45:1 no claro, 4,36:1 no escuro) nos rótulos de seção,
   datas e links do rail.
 - `@axe-core/playwright` com `e2e/a11y.spec.ts` cobrindo `/` e `/en` em claro e escuro.
-- A seção de escrita é opcional: `NEXT_PUBLIC_SHOW_WRITING` no `.env` controla se ela
-  aparece na página e na navegação. Está desligada até haver artigo publicado.
+- Conteúdo opcional por flag no `.env`: `NEXT_PUBLIC_SHOW_PROJECTS` e
+  `NEXT_PUBLIC_SHOW_WRITING` escondem a seção inteira (página e navegação);
+  `NEXT_PUBLIC_SHOW_AI_STACK` esconde só o bloco de IA dentro da stack.
+- Sem projetos publicados, o CTA "Ver projetos" some do hero e "Falar comigo" vira o primário.
 - A label "disponibilidade atual" saiu dos serviços.
 
 **Fase 3 — Conteúdo real (depende do Lucas)**

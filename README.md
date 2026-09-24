@@ -38,12 +38,15 @@ Na primeira vez, instale o navegador do Playwright: `pnpm exec playwright instal
 
 Copie `.env.example` para `.env` (o `.env` não é versionado) e ajuste as flags:
 
-```
-NEXT_PUBLIC_SHOW_WRITING=false   # true faz a seção "escrita" voltar à página e à navegação
-```
+| Variável                    | Controla                                    |
+| --------------------------- | ------------------------------------------- |
+| `NEXT_PUBLIC_SHOW_PROJECTS` | Seção de projetos, na página e na navegação |
+| `NEXT_PUBLIC_SHOW_WRITING`  | Seção de escrita, na página e na navegação  |
+| `NEXT_PUBLIC_SHOW_AI_STACK` | Bloco de IA dentro da seção de stack        |
 
-O valor é lido no `pnpm build`, então mudanças exigem novo build. Em produção, defina a
-variável nas configurações do projeto na Vercel — o `.env` local não chega lá.
+Só `true` liga; variável ausente mantém o conteúdo oculto. O valor é lido no `pnpm build`,
+então mudanças exigem novo build. Em produção, defina as variáveis nas configurações do projeto
+na Vercel — o `.env` local não chega lá.
 
 ## Estrutura
 
@@ -57,4 +60,5 @@ src/hooks/        hooks customizados (scroll-spy, controles de tema)
 src/utils/        helpers sem estado (i18n, seções, cn)
 e2e/              testes Playwright
 docs/PLANO.md     planejamento, tokens e fases
+docs/notas/       notas pessoais (fora do versionamento)
 ```
