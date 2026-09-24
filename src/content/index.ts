@@ -9,4 +9,12 @@ export function getContent(locale: Locale): SiteContent {
   return CONTENT[locale];
 }
 
-export type { SiteContent };
+export type {
+  Article,
+  ExternalLink,
+  FeaturedProject,
+  SecondaryProject,
+  Service,
+  SiteContent,
+  StackGroup,
+} from "./types";

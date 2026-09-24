@@ -1,6 +1,10 @@
 import { describe, expect, it } from "vitest";
 import { getContent } from "./index";
-import { LOCALES, SECTION_IDS } from "@/utils/i18n";
+import { LOCALES } from "@/utils/i18n";
+import { SECTION_IDS } from "@/utils/sections";
+
+const isReachable = (href: string) =>
+  href.startsWith("/") || href.startsWith("mailto:") || URL.canParse(href);
 
 describe("site content", () => {
   it.each(LOCALES)("should label every section in %s", (locale) => {
@@ -28,7 +32,54 @@ describe("site content", () => {
     expect(profile.email).toMatch(/^[^@\s]+@[^@\s]+$/);
     expect(profile.links.length).toBeGreaterThan(0);
     for (const link of profile.links) {
-      expect(() => new URL(link.href)).not.toThrow();
+      expect(isReachable(link.href), link.href).toBe(true);
+    }
+  });
+
+  it.each(LOCALES)("should fill every section with content in %s", (locale) => {
+    const { about, experience, services, projects, stack, writing, contact } = getContent(locale);
+
+    expect(about.columns.length).toBeGreaterThan(0);
+    expect(experience.summary).toBeTruthy();
+    expect(services.items.length).toBeGreaterThan(0);
+    expect(projects.featured.length).toBeGreaterThan(0);
+    expect(stack.groups.length).toBeGreaterThan(0);
+    expect(writing.items.length).toBeGreaterThan(0);
+    expect(contact.title).toBeTruthy();
+  });
+
+  it.each(LOCALES)("should describe every service and project in %s", (locale) => {
+    const { services, projects } = getContent(locale);
+
+    for (const service of services.items) {
+      expect(service.description, service.title).toBeTruthy();
+      expect(service.tags.length, service.title).toBeGreaterThan(0);
+    }
+
+    for (const project of projects.featured) {
+      expect(project.description, project.title).toBeTruthy();
+      expect(project.tags.length, project.title).toBeGreaterThan(0);
+      expect(project.links.length, project.title).toBeGreaterThan(0);
+    }
+  });
+
+  it.each(LOCALES)("should point every link somewhere reachable in %s", (locale) => {
+    const { experience, projects, writing } = getContent(locale);
+    const links = [
+      experience.resume,
+      projects.all,
+      ...projects.featured.flatMap((project) => project.links),
+      ...writing.items.map((article) => ({ label: article.title, href: article.href })),
+    ];
+
+    for (const link of links) {
+      expect(isReachable(link.href), `${link.label}: ${link.href}`).toBe(true);
+    }
+  });
+
+  it.each(LOCALES)("should list every stack group with items in %s", (locale) => {
+    for (const group of getContent(locale).stack.groups) {
+      expect(group.items.length, group.title).toBeGreaterThan(0);
     }
   });
 });
