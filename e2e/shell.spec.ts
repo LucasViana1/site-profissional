@@ -25,10 +25,10 @@ test.describe("shell", () => {
     await page.goto("/");
     await openNavigation(page, isMobile);
 
-    await page.getByRole("link", { name: "projetos", exact: true }).click();
+    await page.getByRole("link", { name: "stack", exact: true }).click();
 
-    await expect(page).toHaveURL(/#projects$/);
-    await expect(page.locator("section#projects")).toBeInViewport();
+    await expect(page).toHaveURL(/#stack$/);
+    await expect(page.locator("section#stack")).toBeInViewport();
   });
 
   test("should keep the theme after switching it", async ({ page, isMobile }) => {

@@ -1,15 +1,6 @@
 import { expect, test } from "@playwright/test";
 
 test.describe("sections", () => {
-  test("should jump to projects from the hero call to action", async ({ page }) => {
-    await page.goto("/");
-
-    await page.getByRole("link", { name: "Ver projetos" }).click();
-
-    await expect(page).toHaveURL(/#projects$/);
-    await expect(page.locator("section#projects")).toBeInViewport();
-  });
-
   test("should jump to contact from the services call to action", async ({ page }) => {
     await page.goto("/");
 
@@ -56,13 +47,17 @@ test.describe("sections", () => {
     }
   });
 
-  test("should hide the writing section while the flag is off", async ({ page, isMobile }) => {
+  test("should point every in-page link at a section that exists", async ({ page }) => {
     await page.goto("/");
 
-    await expect(page.locator("section#writing")).toHaveCount(0);
+    const targets = await page
+      .locator('main a[href^="#"]')
+      .evaluateAll((links) => links.map((link) => link.getAttribute("href")));
 
-    if (isMobile) await page.getByRole("button", { name: "Abrir menu" }).click();
-    await expect(page.getByRole("link", { name: "escrita" })).toHaveCount(0);
+    expect(targets.length).toBeGreaterThan(0);
+    for (const target of targets) {
+      await expect(page.locator(`section${target}`)).toBeAttached();
+    }
   });
 
   test("should translate the sections on the english page", async ({ page }) => {
@@ -70,6 +65,6 @@ test.describe("sections", () => {
 
     await expect(page.locator("#services-title")).toHaveText("services");
     await expect(page.getByRole("link", { name: "Request a quote" })).toBeVisible();
-    await expect(page.getByRole("heading", { name: "Multi-gateway checkout" })).toBeVisible();
+    await expect(page.getByRole("heading", { name: "Engineering" })).toBeVisible();
   });
 });

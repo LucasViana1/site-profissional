@@ -18,9 +18,9 @@ describe("NavList", () => {
   });
 
   it("should mark only the active section as current", () => {
-    render(<NavList labels={labels} activeId="projects" variant="rail" />);
+    render(<NavList labels={labels} activeId="stack" variant="rail" />);
 
-    expect(screen.getByRole("link", { name: labels.projects })).toHaveAttribute(
+    expect(screen.getByRole("link", { name: labels.stack })).toHaveAttribute(
       "aria-current",
       "true",
     );

@@ -21,7 +21,7 @@ export function Portfolio({ locale }: { locale: Locale }) {
       <About content={content} />
       <Experience content={content} />
       <Services content={content} />
-      <Projects content={content} />
+      {isSectionVisible("projects") && <Projects content={content} />}
       <Stack content={content} />
       {isSectionVisible("writing") && <Writing content={content} />}
       <Contact content={content} />

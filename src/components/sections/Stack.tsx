@@ -2,13 +2,16 @@ import type { SiteContent, StackGroup } from "@/content";
 import { Section } from "@/components/ui/section/Section";
 import { Card } from "@/components/ui/Card";
 import { Tag } from "@/components/ui/Tag";
+import { SHOW_AI_STACK } from "@/utils/flags";
 
 export function Stack({ content }: { content: SiteContent }) {
+  const groups = content.stack.groups.filter((group) => SHOW_AI_STACK || group.id !== "ai");
+
   return (
     <Section id="stack" label={content.sections.stack}>
       <ul className="grid gap-4 lg:grid-cols-2">
-        {content.stack.groups.map((group) => (
-          <li key={group.title} className="flex">
+        {groups.map((group) => (
+          <li key={group.id} className="flex">
             <StackCard group={group} />
           </li>
         ))}
