@@ -13,7 +13,7 @@
     "test:unit:watch": "vitest",
     "test:e2e": "playwright test",
     "deploy:preview": "vercel",
-    "deploy:prod": "vercel --prod"
+    "deploy:prod": "vercel login && vercel --prod"
   },
   "dependencies": {
     "@vercel/analytics": "^2.0.1",
