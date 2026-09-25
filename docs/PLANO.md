@@ -181,18 +181,68 @@ docs/
   para o posicionamento atual.
 - `e2e/seo.spec.ts` e `e2e/visual.spec.ts` (8 snapshots). Porta do Playwright movida para 4173:
   na 3000 ele reaproveitava um `next dev` e testava o dev server em vez do `out/`.
-- Lighthouse no build estático: performance 97, acessibilidade 100, boas práticas 96, SEO 100.
+- Lighthouse no build estático: 98/100/96/100 no mobile e 100/100/96/100 no desktop. As boas
+  práticas param em 96 por causa dos 404 dos scripts da Vercel, que só existem em produção.
+- O axe roda com as tags do WCAG 2.2. Sem elas, `target-size` ficava de fora e links de 16px de
+  altura no rail passavam despercebidos — o problema só aparece no desktop, porque no mobile o
+  rail não existe.
 
-**Fase 5 — Deploy**
+**Fase 5 — Deploy — concluída em 2026-09-25**
 
-- Vercel + domínio lucasvianacunha.com.br, preview por PR.
+- No ar em `https://lucasvianacunha.com.br`, servido pela Vercel na região `gru1`, pela
+  integração com o GitHub (push na `main` publica; cada PR ganha preview).
+- Check de 2026-09-25: apex, `www`, `/en`, `/sitemap.xml`, `/robots.txt` e a OG image
+  respondem 200; canonical e `hreflang` apontam para o domínio final; HSTS ativo
+  (`max-age=63072000`); `x-vercel-cache: HIT`; o script do Vercel Analytics responde.
+- As três flags de conteúdo opcional estão `false` em produção por opção — projetos,
+  escrita e o bloco de IA ficam ocultos até haver o que mostrar.
 
-**Fase 6 — Opcional / futuro**
+## 8. Implementações adicionais
 
-- Páginas de case (`/projetos/[slug]`, MDX), blog próprio em MDX, formulário de contato
-  via serviço externo (Formspree/Resend), analytics (Vercel Analytics ou Umami).
+Pendências para priorizar com calma. Nenhuma bloqueia o site, que já está no ar.
 
-## 8. Pontos em aberto
+### Conteúdo
+
+- [ ] **Seção de projetos** — ligar `NEXT_PUBLIC_SHOW_PROJECTS`. Precisa de projetos reais e
+      screenshots 16:9; sem imagem o card cai no padrão listrado do wireframe. Junto disso,
+      decidir se "Case ↗" é link externo ou página interna.
+- [ ] **Bloco de IA na stack** — ligar `NEXT_PUBLIC_SHOW_AI_STACK`. O que sustentar em cada
+      termo está em `docs/notas/ia-llm-agents-rag.md`.
+- [ ] **Revisar gramática e concordância do texto em inglês.**
+- [ ] **Foto própria** no lugar do avatar do GitHub, que é placeholder e tem só 288×288 (é o
+      máximo que o GitHub entrega).
+- [ ] **Seção de escrita** — ligar `NEXT_PUBLIC_SHOW_WRITING` quando houver artigo publicado.
+
+### Design
+
+- [ ] **Revisar o design system e os ícones dos links.**
+- [ ] **Chips da stack em `text-primary`** no lugar de `text-secondary`: nome de tecnologia é
+      substantivo próprio e merece mais contraste.
+
+### SEO e técnico
+
+- [ ] **`www` não redireciona** — responde 200 e serve o mesmo conteúdo do apex. O canonical
+      mitiga, mas o certo é um 301 configurado na Vercel.
+- [ ] **URL do currículo carrega `ouid`**, que é o identificador da conta Google. Usar só o id
+      do documento.
+- [ ] **`apple-icon.png` 180×180** para a tela de início do iOS; sem ele o iPhone usa um print
+      da página.
+- [ ] **Tipografia da OG image** usa a fonte padrão do gerador, então o peso bold não aplica.
+      Embutir o arquivo da Inter resolve, ao custo de ~300 KB no repositório.
+- [ ] **Confirmar o Speed Insights** no dashboard — o script não aparece no HTML em produção.
+- [ ] **Rebuild na virada do ano** — os anos de experiência vêm de `src/utils/career.ts` e são
+      calculados no build; sem deploy, o número congela.
+- [ ] **Atualizar as seções 1 a 6 deste plano**, que ainda descrevem o wireframe original
+      (selo de disponibilidade, cards de checkout/performance/IA, "retorno em 24h úteis").
+
+### Futuro
+
+- [ ] Páginas de case (`/projetos/[slug]`) em MDX.
+- [ ] Blog próprio em MDX.
+- [ ] Formulário de contato via serviço externo (Formspree, Resend).
+- [ ] Analytics alternativo (Umami) se quiser ser dono dos dados.
+
+## 9. Pontos em aberto
 
 - [x] Hospedagem: Vercel (domínio lucasvianacunha.com.br)
 - [ ] "Case ↗" dos projetos: link externo ou página interna (fase 6)? — decidir na fase 3
