@@ -1,10 +1,10 @@
 import type { SiteContent } from "./types";
+import { YEARS_AT_MAGALU, YEARS_IN_FIELD } from "@/utils/career";
 
 export const pt: SiteContent = {
   meta: {
     title: "Lucas Viana · software engineer",
-    description:
-      "Software engineer com mais de sete anos em produtos web e e-commerce. Faço sites, landing pages e melhorias em sites que já estão no ar.",
+    description: `Software engineer com mais de ${YEARS_IN_FIELD} anos em produtos web e e-commerce. Faço sites, landing pages e melhorias em sites que já estão no ar.`,
   },
   profile: {
     name: "Lucas Viana",
@@ -36,22 +36,18 @@ export const pt: SiteContent = {
   },
   hero: {
     tagline: "software engineer · produtos digitais & e-commerce",
-    summary:
-      "Transformo problemas em soluções digitais. Há mais de quatro anos faço isso no checkout do e-commerce da Magalu, onde cada detalhe de performance e confiabilidade vira venda ou carrinho abandonado.",
+    summary: `Transformo problemas em soluções digitais. Há mais de ${YEARS_AT_MAGALU} anos faço isso no checkout do e-commerce da Magalu, onde cada detalhe de performance e confiabilidade decide uma venda.`,
     primaryCta: "Ver projetos",
     secondaryCta: "Falar comigo",
   },
   about: {
     columns: [
       "Sou engenheiro de software com especialização em front-end, formado em Ciência da Computação e morando em Jundiaí, São Paulo. Na prática, meu trabalho é transformar uma ideia em uma tela que funciona: rápida, clara e confiável para quem está do outro lado.",
-      "Há mais de sete anos desenvolvo produtos web. Comecei como fullstack, passei por agência e e-commerce, e hoje atuo na área mais crítica de uma operação de varejo: o checkout. Também escrevo testes, documento o que construo e participo das decisões de arquitetura do time. Para mim, engenharia é o ciclo completo, não só entregar a tela.",
+      "Escrevo testes, documento o que construo e participo das decisões de arquitetura do time. Para mim, engenharia é o ciclo completo: entender o problema, construir, medir e manter no ar.",
     ],
   },
   experience: {
-    summary:
-      "Mais de sete anos construindo produtos web, os últimos quatro dentro de uma das maiores operações de e-commerce do Brasil. Já trabalhei em agência, em startup de impacto social e em varejo digital de alto tráfego.",
-    detail:
-      "Atuo do desenho da interface ao monitoramento em produção, com testes automatizados e acompanhamento das métricas de conversão.",
+    summary: `Mais de ${YEARS_IN_FIELD} anos construindo produtos web, os últimos ${YEARS_AT_MAGALU} dentro de uma das maiores operações de e-commerce do Brasil. Comecei como fullstack e já trabalhei em agência, em startup de impacto social e em varejo digital de alto tráfego.`,
     resume: {
       label: "Currículo completo",
       href: "https://docs.google.com/document/d/1zjaaUdXuXvzq5lSjyW-lYQC8DaNiSvNz/edit?usp=sharing&ouid=107710029748934966707&rtpof=true&sd=true",
@@ -60,7 +56,7 @@ export const pt: SiteContent = {
   services: {
     kinds: "freelance · consultoria",
     intro:
-      "Também faço sites e páginas para quem precisa estar bem na internet. Do zero ou em cima do que você já tem.",
+      "Também faço sites e páginas para o seu negócio ser encontrado e passar credibilidade. Do zero ou a partir do que você já tem.",
     items: [
       {
         title: "Landing page que converte",

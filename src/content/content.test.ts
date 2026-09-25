@@ -2,6 +2,7 @@ import { describe, expect, it } from "vitest";
 import { getContent } from "./index";
 import { LOCALES } from "@/utils/i18n";
 import { SECTION_IDS } from "@/utils/sections";
+import { YEARS_AT_MAGALU, YEARS_IN_FIELD } from "@/utils/career";
 
 const isReachable = (href: string) =>
   href.startsWith("/") || href.startsWith("mailto:") || URL.canParse(href);
@@ -75,6 +76,15 @@ describe("site content", () => {
     for (const link of links) {
       expect(isReachable(link.href), `${link.label}: ${link.href}`).toBe(true);
     }
+  });
+
+  it.each(LOCALES)("should read the years from the career constants in %s", (locale) => {
+    const { meta, hero, experience } = getContent(locale);
+
+    expect(meta.description).toContain(`${YEARS_IN_FIELD}`);
+    expect(hero.summary).toContain(`${YEARS_AT_MAGALU}`);
+    expect(experience.summary).toContain(`${YEARS_IN_FIELD}`);
+    expect(experience.summary).toContain(`${YEARS_AT_MAGALU}`);
   });
 
   it.each(LOCALES)("should list every stack group with items in %s", (locale) => {

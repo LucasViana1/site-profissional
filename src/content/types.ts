@@ -33,7 +33,6 @@ export type SiteContent = {
   };
   experience: {
     summary: string;
-    detail: string;
     resume: ExternalLink;
   };
   services: {

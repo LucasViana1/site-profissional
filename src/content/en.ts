@@ -1,10 +1,10 @@
 import type { SiteContent } from "./types";
+import { YEARS_AT_MAGALU, YEARS_IN_FIELD } from "@/utils/career";
 
 export const en: SiteContent = {
   meta: {
     title: "Lucas Viana · software engineer",
-    description:
-      "Software engineer with more than seven years in web products and e-commerce. I build sites, landing pages and fixes for sites already live.",
+    description: `Software engineer with more than ${YEARS_IN_FIELD} years in web products and e-commerce. I build sites, landing pages and fixes for sites already live.`,
   },
   profile: {
     name: "Lucas Viana",
@@ -36,22 +36,18 @@ export const en: SiteContent = {
   },
   hero: {
     tagline: "software engineer · digital products & e-commerce",
-    summary:
-      "I turn problems into digital solutions. For more than four years I have done that in the checkout of Magalu's e-commerce, where every detail of performance and reliability turns into a sale or an abandoned cart.",
+    summary: `I turn problems into digital solutions. For more than ${YEARS_AT_MAGALU} years I have done that in the checkout of Magalu's e-commerce, where every detail of performance and reliability decides a sale.`,
     primaryCta: "See projects",
     secondaryCta: "Get in touch",
   },
   about: {
     columns: [
       "I am a software engineer specialised in front-end, with a degree in Computer Science, based in Jundiaí, São Paulo. In practice, my job is turning an idea into a screen that works: fast, clear and dependable for whoever is on the other side.",
-      "I have been building web products for more than seven years. I started as a fullstack developer, worked at an agency and in e-commerce, and today I work on the most critical area of a retail operation: the checkout. I also write tests, document what I build and take part in the team's architecture decisions. To me, engineering is the whole cycle, not just shipping the screen.",
+      "I write tests, document what I build and take part in the team's architecture decisions. To me, engineering is the whole cycle: understanding the problem, building it, measuring it and keeping it running.",
     ],
   },
   experience: {
-    summary:
-      "More than seven years building web products, the last four inside one of the largest e-commerce operations in Brazil. I have worked at an agency, at a social impact startup and in high-traffic digital retail.",
-    detail:
-      "I work from interface design through production monitoring, with automated tests and a close eye on conversion metrics.",
+    summary: `More than ${YEARS_IN_FIELD} years building web products, the last ${YEARS_AT_MAGALU} inside one of the largest e-commerce operations in Brazil. I started as a fullstack developer and have worked at an agency, at a social impact startup and in high-traffic digital retail.`,
     resume: {
       label: "Full career history",
       href: "https://docs.google.com/document/d/1zjaaUdXuXvzq5lSjyW-lYQC8DaNiSvNz/edit?usp=sharing&ouid=107710029748934966707&rtpof=true&sd=true",
@@ -60,7 +56,7 @@ export const en: SiteContent = {
   services: {
     kinds: "freelance · consulting",
     intro:
-      "I also build sites and pages for people who need to show up well online. From scratch or on top of what you already have.",
+      "I also build sites and pages so your business gets found and looks the part. From scratch or from what you already have.",
     items: [
       {
         title: "Landing page that converts",
