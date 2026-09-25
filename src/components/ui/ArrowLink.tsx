@@ -15,9 +15,12 @@ export function ArrowLink({
     <a
       href={href}
       {...(external ? { target: "_blank", rel: "noreferrer" } : {})}
-      className={cn("text-accent hover:text-accent-soft-text text-xs font-semibold", className)}
+      className={cn(
+        "text-accent hover:text-accent-soft-text inline-flex min-h-6 items-center text-xs font-semibold",
+        className,
+      )}
     >
-      {label} <span aria-hidden>↗</span>
+      {label} <span aria-hidden>&nbsp;↗</span>
     </a>
   );
 }

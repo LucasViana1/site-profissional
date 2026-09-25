@@ -2,23 +2,26 @@ import type { SiteContent } from "@/content";
 
 export function ContactLinks({ profile }: { profile: SiteContent["profile"] }) {
   return (
-    <div className="text-muted font-mono text-[10px]/[1.6]">
-      <a href={`mailto:${profile.email}`} className="hover:text-accent block">
+    <div className="text-muted flex flex-col font-mono text-[10px]">
+      <a
+        href={`mailto:${profile.email}`}
+        className="hover:text-accent flex min-h-6 items-center self-start"
+      >
         {profile.email}
       </a>
-      <p className="flex gap-2">
+      <div className="flex flex-wrap gap-x-4">
         {profile.links.map((link) => (
           <a
             key={link.href}
             href={link.href}
             target="_blank"
             rel="noreferrer"
-            className="hover:text-accent"
+            className="hover:text-accent flex min-h-6 items-center"
           >
             {link.label} ↗
           </a>
         ))}
-      </p>
+      </div>
     </div>
   );
 }

@@ -32,7 +32,7 @@ export function RootDocument({ locale, children }: { locale: Locale; children: R
       <body className="min-h-full" suppressHydrationWarning>
         <a
           href="#main"
-          className="bg-accent text-surface sr-only rounded-lg px-4 py-2 text-sm font-semibold focus:not-sr-only focus:absolute focus:top-3 focus:left-3 focus:z-50"
+          className="bg-accent text-surface sr-only rounded-lg px-4 text-sm font-semibold focus:not-sr-only focus:absolute focus:top-3 focus:left-3 focus:z-50 focus:flex focus:min-h-11 focus:items-center"
         >
           {nav.skipToContent}
         </a>

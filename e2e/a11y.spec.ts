@@ -17,7 +17,7 @@ for (const page of PAGES) {
       await browserPage.goto(page.path);
 
       const { violations } = await new AxeBuilder({ page: browserPage })
-        .withTags(["wcag2a", "wcag2aa", "wcag21a", "wcag21aa"])
+        .withTags(["wcag2a", "wcag2aa", "wcag21a", "wcag21aa", "wcag22a", "wcag22aa"])
         .analyze();
 
       expect(violations.map((violation) => `${violation.id}: ${violation.help}`)).toEqual([]);
